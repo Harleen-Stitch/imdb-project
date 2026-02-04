@@ -5,6 +5,9 @@
 require_once dirname(__DIR__) . '/vendor/autoload.php'; # autoloader composer
 require_once dirname(__DIR__) . '/includes/config.php'; # charge .env
 require_once dirname(__DIR__) . '/includes/db.php'; # BDD
+require_once dirname(__DIR__) . '/includes/auth.php';
+startSecureSession();
+getCurrentUser();
 
 include dirname(__DIR__) . '/includes/header.php'; # header html
 ?>
