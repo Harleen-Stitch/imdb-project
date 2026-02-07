@@ -10,10 +10,18 @@ require_once dirname(__DIR__) . '/src/movie_functions.php'; // Fonctions films
 
 getCurrentUser();
 
-// Récupération des films
-$movies = getAllMovies(10);
+// Pagination
+$limit = 10;
+$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+if ($page < 1) {
+    $page = 1;
+}
+$offset = ($page - 1) * $limit;
 
-// Header HTML
+// Récupération des films
+$movies = getMoviesPaginated($limit, $offset);
+
+// Header
 include dirname(__DIR__) . '/includes/header.php';
 ?>
 
@@ -23,28 +31,22 @@ include dirname(__DIR__) . '/includes/header.php';
 
     <section class="movies-list">
         <?php if (empty($movies)) : ?>
-            <p>Aucun film disponible.</p>
+            <p>Aucun film trouvé pour cette catégorie.</p>
         <?php else : ?>
             <?php foreach ($movies as $movie) : ?>
-                <article class="movie-card">
-                    <h2><?= htmlspecialchars($movie['title']) ?></h2>
-
-                    <?php if (!empty($movie['poster_url'])) : ?>
-                        <img
-                            src="https://image.tmdb.org/t/p/w500<?= htmlspecialchars($movie['poster_url']) ?>"
-                            alt="<?= htmlspecialchars($movie['title']) ?>"
-                        >
-                    <?php endif; ?>
-
-                    <p>Prix : <?= htmlspecialchars($movie['price']) ?> €</p>
-
-                    <a href="movie.php?id=<?= (int) $movie['id'] ?>">
-                        Voir
-                    </a>
-                </article>
+                <?php include dirname(__DIR__) . '/includes/movie_card.php'; ?>
             <?php endforeach; ?>
         <?php endif; ?>
     </section>
+
+
+    <nav class="pagination">
+        <?php if ($page > 1) : ?>
+            <a href="index.php?page=<?= $page - 1 ?>">Page précédente</a>
+        <?php endif; ?>
+
+        <a href="index.php?page=<?= $page + 1 ?>">Page suivante</a>
+    </nav>
 </main>
 
 <?php

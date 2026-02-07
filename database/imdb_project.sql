@@ -43,7 +43,7 @@ CREATE TABLE movies (
     price               DECIMAL(6,2) NOT NULL,
     release_year        YEAR,
     duration            INT,
-    tmdb_id             INT,
+    tmdb_id             INT UNIQUE,
     poster_url          VARCHAR(255),
     director_id         INT,
     created_at          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

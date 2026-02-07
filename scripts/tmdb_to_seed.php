@@ -63,7 +63,7 @@ foreach ($genres['genres'] as $genre) {
             $duration = $details['runtime'] ?? null;
 
             // Insère le film dans la table
-            $sql[] = "INSERT INTO movies (title, description, price, release_year, tmdb_id, poster_url, duration)
+            $sql[] = "INSERT IGNORE INTO movies (title, description, price, release_year, tmdb_id, poster_url, duration)
                       VALUES (
                         '" . esc($movie['title']) . "',
                         '" . esc($movie['overview']) . "',
