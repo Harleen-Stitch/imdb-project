@@ -1,3 +1,6 @@
+security.php
+$isHex64 => à supprimer si on n'utilise pas de token en bin2hex
+
 PLAN DU SITE
 
 imdb-project/
@@ -45,15 +48,15 @@ imdb-project/
 │   │   └── CartController.php                                               |
 │   │
 │   └── models/                      # Classes métier
-│       ├── Movie.php                                                       Marie
-│       ├── User.php                                                        Kenza
-│       ├── Director.php                                                    Marie
-│       └── Cart.php                                                        Kenza
+│       ├── Movie.php                                                      Marie
+│       ├── User.php                                                       Kenza
+│       ├── Director.php                                                   Marie
+│       └── Cart.php                                                       Kenza
 │
-├── database/                                                               Marie
-│   ├── schema.sql                   # Structure de la BDD                    |
-│   ├── seed.sql                     # Données de test                        |
-│   └── README.md                    # Instructions d'installation BDD        |
+├── database/                                                              Marie
+│   ├── schema.sql                   # Structure de la BDD                   |
+│   ├── seed.sql                     # Données de test                       |
+│   └── README.md                    # Instructions d'installation BDD        
 │
 ├── docs/                            # Documentation
 │   ├── installation.md

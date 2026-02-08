@@ -1,0 +1,9 @@
+# variable d'environnement 
+.env
+
+/vendor
+
+# documents de suivi
+.échange avec IA.docx
+.install_supp.txt
+.imdb_project.docx
