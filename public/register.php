@@ -96,7 +96,7 @@ include dirname(__DIR__) . '/includes/header.php';
                     </div>
                 <?php endif; ?>
 
-                <form method="POST" action="register.php">
+                <form method="POST" action="register.php" class="form">
                     <!-- Token CSRF caché -->
                     <input type="hidden" name="csrf_token" value="<?= generateCsrfToken() ?>">
                     <!-- CHAMPS EMAIL -->

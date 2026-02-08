@@ -76,7 +76,7 @@ include dirname(__DIR__) . '/includes/header.php';
     <main>
         <div>
             <h1>Connexion</h1>
-            <form method="POST" action="login.php">
+            <form method="POST" action="login.php" class="form">
                 <!-- Token CSRF caché -->
                 <input type="hidden" name="csrf_token" value="<?= generateCsrfToken() ?>">
                  <!-- CHAMPS EMAIL -->

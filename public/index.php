@@ -27,7 +27,7 @@ include dirname(__DIR__) . '/includes/header.php';
 
     <main> <!-- affiche "à vous" ou le nom de l'utilisateur -->
         <!-- https://laconsole.dev/formations/php/sessions#:~:text=Pour%20supprimer%20une%20variable%20de,copier&text=Il%20est%20%C3%A9galement%20possible%20de,la%20variable%20superglobale%20%24_SESSION%20. -->
-        <h1 style="color: green;">Bievenue <?php
+        <h1>Bievenue <?php
         if (!empty($_SESSION['username'])) {
         echo $_SESSION['username'];
         } else {

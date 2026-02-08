@@ -38,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         exit;
     } else {
         logout(); ?>
+        <!-- garde-fou affichage si modif de logout -->
         <p>"Vous êtes bien déconnecté"
             <br>
             <a href="<?= APP_URL ?>/public/lindex.php">Retourner à l'accueil</a>

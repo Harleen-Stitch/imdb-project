@@ -1,8 +1,58 @@
+/* -------------------
+----- POLICE --------
+-------------------*/
+:root {
+    --nav-height: 70px;
+    --gap: 20px;
+    --btn-border: lightblue;
+    --btn-bg-hover: blue;
+    --btn-text-hover: #fff;
+    --nav-bg: rgb(180,100,255);
+    --title-text: rgb(180,100,255);
+}
+
+html, body {
+    margin: 15px;
+    padding: 0;
+    overflow-x: hidden;
+    background: rgba(245,245,220,0.718);
+    font-size:medium;
+}
+
+/* -------------------
+------ NAV BAR ------- --
+---------------------*/
+.header {
+    position: fixed; /* un élément fixed est retiré du flux*/
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    z-index: 100;
+    background: var(--nav-bg);
+
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px; 
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: var(--nav-height);
+}
+
+/* -------------------
+------ MENU ----------
+---------------------*/
 .menu {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: var(--gap);
+    align-items: center;
     padding: 0;
+    margin: 0;
 }
 
 .menu li {
@@ -12,7 +62,7 @@
 .menu a,
 .menu span {
     text-decoration: none;
-    color: black;
+    color: var(--text);
     cursor: pointer;
 }
 
@@ -27,6 +77,7 @@
     margin: 0;
     background: white;
     border: 1px solid #ccc;
+    z-index: 110;
 }
 
 .dropdown-menu li {
@@ -39,4 +90,43 @@
 
 .dropdown:hover .dropdown-menu {
     display: block;
+}
+/* -------------------
+------ BOUTON ------- --
+---------------------*/
+
+
+.btn {
+    border: 3px solid lightblue;
+    border-radius: 30%;
+    padding: 5px;
+    background:  lightskyblue;
+}
+
+.btn:hover {
+    background: var(--btn-bg-hover);
+    color: var(--btn-text-hover)
+}
+
+/* -------------------
+------ TITTRES ------- --
+---------------------*/
+h1 {
+    display: flex;
+    justify-content: center;
+    color: var(--title-text);
+}
+
+/* -------------------
+------ MOVIES ------- --
+---------------------*/
+.movies-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 55px;
+    justify-content: center;
+}
+
+.movie-card img {
+    height : 400px;
 }

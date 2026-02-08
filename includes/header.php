@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>IMDB Project</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<?= APP_URL ?>/public/css/style.css">
 </head>
 <body>
 
-<nav>
+<nav class="header">
     <ul class="menu">
         <li><a href="index.php">Accueil</a></li>
 
