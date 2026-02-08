@@ -2,20 +2,18 @@
 #########################################
 ##  FICHIER DE CONFIGURATION DU PROJET ##
 #########################################
+/* si simplification a faire, prendre la version de Marie :
+    define('DB_HOST', 'localhost');
+define('DB_NAME', 'imdb_project');
+define('DB_USER', 'root');
+*/
+
 
 /** Force le typage strict en PHP
  * Evite les conversions automatiques dangereuses
  * Améliore la sécurité et la fiabilité
  * best practice moderne
  */
-
-/* si besoin de simplifier le fichier, prendre la version de Marie:
-
-    define('DB_HOST', 'localhost');
-define('DB_NAME', 'imdb_project');
-define('DB_USER', 'root');
-*/
-
 declare(strict_types=1);
 
 // Charge les variables d'environnement

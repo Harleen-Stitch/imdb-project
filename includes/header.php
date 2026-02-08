@@ -39,5 +39,19 @@
         <li><a href="search.php">Recherche</a></li>
         <li><a href="cart.php">Panier</a></li>
         <li><a href="orders.php">Commandes</a></li>
+        <li>
+            <?php if (!isLoggedIn()) { ?>
+                <a class="btn" href="<?= APP_URL ?>/public/login.php">Se connecter</a>
+            <?php } else { ?>
+                <!-- bouton  car sinon ça fait un get, et on ne veut pas -->
+                <form action="<?= APP_URL ?>/public/logout.php" method="POST" style="display:inline">
+                    <input  type="hidden"
+                            name="csrf_token"
+                            value="<?= generateCsrfToken() ?>"
+                    >
+                    <button type="submit" class="btn">Se déconnecter</button>
+                </form>
+            <?php } ?>
+        </li>
     </ul>
 </nav>

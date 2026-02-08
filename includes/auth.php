@@ -39,11 +39,11 @@ function login(int $user_id, string $username, string $email):void {
 }
 
 // Déconnexion
-function logout(): void {
-    $_SESSION = [];                 // vide la mémoire => !!! je dois vérifier si session_unset fait la même chose. Si oui, on garde unset
-    session_unset():                // vide les variables de session
+function logout(): void {               //https://laconsole.dev/formations/php/sessions#:~:text=Pour%20supprimer%20une%20variable%20de,copier&text=Il%20est%20%C3%A9galement%20possible%20de,la%20variable%20superglobale%20%24_SESSION%20.
+    $_SESSION = array();                 // vide la mémoire 
+    //session_unset();                // pour vider une variable de session spécifique
     session_destroy();              // détruit la session
-    header('Location : ' .APP_URL.'/public/index.php');  // redirige vers index après déconnexion
+    header('Location: ' .APP_URL.'/public/index.php');  // redirige vers index après déconnexion
     exit();
 }
 
