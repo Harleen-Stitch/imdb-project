@@ -31,8 +31,7 @@ CREATE TABLE users (
 
 CREATE TABLE directors (
     id                  INT AUTO_INCREMENT PRIMARY KEY,
-    name                VARCHAR(255) NOT NULL,
-    bio                 TEXT,
+    name                VARCHAR(255) NOT NULL UNIQUE,           -- !!! unique risque de poser problème si 2 réalisateur ont le même nom
     created_at          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     INDEX idx_name (name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -44,7 +43,7 @@ CREATE TABLE movies (
     price               DECIMAL(6,2) NOT NULL,
     release_year        YEAR,
     duration            INT,
-    tmdb_id             INT,
+    tmdb_id             INT UNIQUE,
     poster_url          VARCHAR(255),
     director_id         INT,
     created_at          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -58,9 +57,7 @@ CREATE TABLE movies (
 CREATE TABLE categories (
     id              INT AUTO_INCREMENT PRIMARY KEY,
     name            VARCHAR(100) NOT NULL UNIQUE,
-    slug            VARCHAR(100) NOT NULL UNIQUE,
-    created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    INDEX idx_slug (slug)
+    created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE movie_category (
@@ -74,7 +71,7 @@ CREATE TABLE movie_category (
 
 CREATE TABLE actors (
     id          INT AUTO_INCREMENT PRIMARY KEY,
-    name        VARCHAR(255) NOT NULL,
+    name        VARCHAR(255) NOT NULL UNIQUE,
     created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     INDEX idx_name (name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

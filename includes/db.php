@@ -4,6 +4,21 @@
  * Améliore la sécurité et la fiabilité
  * best practice moderne
  */
+
+/* si besoin de simplifier, prendre le fichier de Marie :
+    try {
+    $pdo = new PDO(
+        'mysql:host=' . DB_HOST . ';port=3307;dbname=' . DB_NAME . ';charset=utf8',
+        DB_USER,
+        DB_PASS
+    );
+
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+} catch (PDOException $e) {
+    die('Erreur de connexion à la base de données');
+    */
+    
 declare(strict_types=1);
 
 if (!defined('DB_HOST')) {

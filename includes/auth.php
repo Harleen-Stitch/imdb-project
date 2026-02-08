@@ -6,9 +6,9 @@ require_once 'config.php';
 
 
 // Démarrer une session sécurisée si aucune en cours
-function startSecureSession(): void {
+function startSecureSession(): void {                   // !!!! Pourquoi tu veux supprimer le fait que c'est une fonction ?
     if (session_status() === PHP_SESSION_NONE) {
-        session_start([
+        session_start([                                 // !!! Pour le coup, il me semble que httponly on en a parlé en cours
             'cookie_httponly' => true,
             'cookie_secure' => !APP_DEBUG, // permet d'avoir false (pour site en http) si APP_DEBUG est en true (dev)
             'cookie_samesite' => 'Strict',
@@ -18,7 +18,7 @@ function startSecureSession(): void {
 
 // vérifier si un utilisateur est connecté (ATTENTION, ce n'est pas la même chose que d'avoir une session)
 function isLoggedIn(): bool {
-    return isset($_SESSION['user_id']);
+    return isset($_SESSION['user_id']);         // !!! user ou user_id ?
 }
 
 
@@ -32,7 +32,7 @@ function requireLogin(): void {
 
 // Connexion
 function login(int $user_id, string $username, string $email):void {
-    session_regenerate_id(true);
+    session_regenerate_id(true);                    // !!! tu n'as gardé que le  ['user']= $username})
     $_SESSION['user_id'] = $user_id;
     $_SESSION['username'] = $username;
     $_SESSION['email'] = $email;
@@ -40,7 +40,8 @@ function login(int $user_id, string $username, string $email):void {
 
 // Déconnexion
 function logout(): void {
-    $_SESSION = [];                 // vide la mémoire
+    $_SESSION = [];                 // vide la mémoire => !!! je dois vérifier si session_unset fait la même chose. Si oui, on garde unset
+    session_unset():                // vide les variables de session
     session_destroy();              // détruit la session
     header('Location : ' .APP_URL.'/public/index.php');  // redirige vers index après déconnexion
     exit();
