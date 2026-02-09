@@ -45,10 +45,7 @@
             <?php } else { ?>
                 <!-- bouton  car sinon ça fait un get, et on ne veut pas -->
                 <form action="<?= APP_URL ?>/public/logout.php" method="POST" style="display:inline">
-                    <input  type="hidden"
-                            name="csrf_token"
-                            value="<?= generateCsrfToken() ?>"
-                    >
+                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(generateCsrfToken()) ?>">
                     <button type="submit" class="btn">Se déconnecter</button>
                 </form>
             <?php } ?>

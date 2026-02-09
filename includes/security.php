@@ -1,4 +1,5 @@
 <?php
+// includes/security.php
 ##########################################
 ##  FONCTIONS DE SECURITE ET VALIDATION ##
 ##########################################

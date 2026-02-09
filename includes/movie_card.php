@@ -15,6 +15,7 @@
         </span>
 
         <form action="cart.php" method="post">
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(generateCsrfToken()) ?>">
             <input type="hidden" name="movie_id" value="<?= (int) $movie['id'] ?>">
             <form method="post" action="cart.php">
                 <input type="hidden" name="movie_id" value="<?= (int) $movie['id'] ?>">

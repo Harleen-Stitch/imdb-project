@@ -1,4 +1,5 @@
 <?php
+//includes/auth.php
 declare(strict_types=1);
 // Gestion des sessions
 require_once 'config.php';
@@ -12,6 +13,8 @@ function startSecureSession(): void {                   // !!!! Pourquoi tu veux
             'cookie_httponly' => true,
             'cookie_secure' => !APP_DEBUG, // permet d'avoir false (pour site en http) si APP_DEBUG est en true (dev)
             'cookie_samesite' => 'Strict',
+            'cookie_lifetime' => SESSION_LIFETIME ?? 0,
+            'cookie_path' => '/',
         ]);
     }
 }

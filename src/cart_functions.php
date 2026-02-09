@@ -1,5 +1,5 @@
 <?php
-
+// src/cart.php
 function getUserIdByUsername($username)
 {
     global $pdo;
@@ -97,4 +97,48 @@ function getOrderItems($orderId)
     $stmt->execute(['order_id' => $orderId]);
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function checkout(int $userId) {
+    global $pdo;
+    $cartItems = getCartMovies($userId);
+    if (empty($cartItems)) {
+        throw new RuntimeException("Panier vide");
+    }
+    $cartTotal = 0;
+    foreach ($cartItems as $movie) {
+        $cartTotal += (float) $movie['price'];
+    }
+    try {
+        $pdo->beginTransaction();
+        $stmt = $pdo->prepare("INSERT INTO orders (user_id, total_amount, status, created_at)
+        VALUES (:user_id, :total_amount, :status, NOW())");
+        $stmt->execute([
+        ':user_id' => $userId,
+        ':total_amount' => $cartTotal,
+        ':status' => 'paid']);
+
+        $orderId = (int)$pdo->lastInsertId();
+        $oi = $pdo->prepare("
+        INSERT INTO order_items (order_id, movie_id, price)
+        VALUES (:order_id, :movie_id, :price)");
+
+        foreach ($cartItems as $movie) {
+            $oi->execute([
+                ':order_id' => $orderId,
+                ':movie_id' => (int)$movie['id'],
+                ':price' => (float)$movie['price'],
+            ]);
+        } // vider le panier
+
+        $ec = $pdo->prepare("DELETE FROM cart_items WHERE user_id = :user_id");
+        $ec->execute([':user_id'=> $userId]);
+        $pdo->commit();
+        return $orderId;
+    } catch (Throwable $e) {
+        if ($pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
+        throw $e;
+    }
 }

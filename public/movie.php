@@ -1,11 +1,15 @@
 <?php 
-
-# require_once dirname(__DIR__) . '/vendor/autoload.php';
+declare(strict_types=1);
+// public/movie.php
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 require_once dirname(__DIR__) . '/includes/config.php';
 require_once dirname(__DIR__) . '/includes/db.php';
 require_once dirname(__DIR__) . '/includes/auth.php';
 require_once dirname(__DIR__) . '/src/movie_functions.php';
 require_once dirname(__DIR__) . '/src/category_functions.php';
+require_once dirname(__DIR__) . '/src/cart_functions.php';
+require_once dirname(__DIR__) . '/includes/security.php';
+startSecureSession();
 getCurrentUser();
 
 // Récupération de l'id du film via GET
@@ -92,6 +96,7 @@ include dirname(__DIR__) . '/includes/header.php';
             <!-- Panier -->
             <p>
                 <form method="post" action="cart.php">
+                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(generateCsrfToken()) ?>">
                     <input type="hidden" name="movie_id" value="<?= (int) $movie['id'] ?>">
                     <button type="submit" name="add_to_cart">Ajouter au panier</button>
                 </form>

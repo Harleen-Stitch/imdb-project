@@ -1,4 +1,5 @@
 <?php
+// includes/conf.php
 #########################################
 ##  FICHIER DE CONFIGURATION DU PROJET ##
 #########################################
