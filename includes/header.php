@@ -38,7 +38,6 @@
 
         <li><a href="search.php">Recherche</a></li>
         <li><a href="cart.php">Panier</a></li>
-        <li><a href="orders.php">Commandes</a></li>
         <li>
             <?php if (!isLoggedIn()) { ?>
                 <a class="btn" href="<?= APP_URL ?>/public/login.php">Se connecter</a>
