@@ -1,3 +1,10 @@
+<?php
+require_once dirname(__DIR__) . '/includes/config.php'; # charge .env
+require_once dirname(__DIR__) . '/includes/auth.php';
+require_once dirname(__DIR__) . '/includes/security.php';
+startSecureSession();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -46,6 +53,14 @@
                 <form action="<?= APP_URL ?>/public/logout.php" method="POST" style="display:inline">
                     <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(generateCsrfToken()) ?>">
                     <button type="submit" class="btn">Se déconnecter</button>
+                </form>
+            <?php } ?>
+        </li>
+        <li>
+            <?php if (isLoggedIn()) { ?>
+                <form action="<?= APP_URL ?>/public/account.php" method="POST" style="display:inline">
+                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(generateCsrfToken()) ?>">
+                    <button type="submit" class="btn">Mon compte</button>
                 </form>
             <?php } ?>
         </li>

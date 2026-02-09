@@ -94,6 +94,7 @@ unset($_SESSION['flash_success']); // fenêtre pop-up ne s'affiche qu'une fois
             <div class="modal-content">
                 <h3 id="order-modal-titel">Commande validée !</h3>
                 <p> Votre commande a été enregistrée avec succès.</p>
+                <button id="order-modal-close" type="button" aria-label="Fermer"><a href="index.php">OK</a></button>
 
             </div>
         </div>

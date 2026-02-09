@@ -1,13 +1,13 @@
 <?php 
+declare(strict_types=1);
 // public/index.php
 // permet d'appeler les classes et sera valable pour tous les fichiers
 require_once dirname(__DIR__) . '/vendor/autoload.php'; # autoloader composer
 require_once dirname(__DIR__) . '/includes/config.php'; # charge .env
-require_once dirname(__DIR__) . '/includes/db.php'; # BDD
 require_once dirname(__DIR__) . '/includes/auth.php';
 require_once dirname(__DIR__) . '/includes/security.php';
+require_once dirname(__DIR__) . '/includes/db.php'; # BDD
 require_once dirname(__DIR__) . '/src/movie_functions.php';
-startSecureSession();
 getCurrentUser();
 
 // Pagination

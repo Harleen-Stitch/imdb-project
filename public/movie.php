@@ -44,7 +44,7 @@ include dirname(__DIR__) . '/includes/header.php';
 
             <?php if (!empty($movie['poster_url'])) : ?>
                 <img
-                    src="https://image.tmdb.org/t/p/w500<?= htmlspecialchars($movie['poster_url']) ?>"
+                    src="https://image.tmdb.org/t/p/w500<?= htmlspecialchars($movie['poster_url'])?>"
                     alt="<?= htmlspecialchars($movie['title']) ?>"
                 >
             <?php endif; ?>

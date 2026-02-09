@@ -19,6 +19,10 @@ html, body {
     font-size:medium;
 }
 
+.blod {
+    font-size: bold;
+}
+
 /* -------------------
 ------ NAV BAR ------- --
 ---------------------*/
@@ -162,4 +166,12 @@ h3 {
 }
 .modal-content button:hover {
     background: #157347;
+}
+
+
+/*-----------------
+------ USER -------
+-----------------*/
+dt {
+    font-weight: bold;
 }
