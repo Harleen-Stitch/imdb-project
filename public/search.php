@@ -1,10 +1,14 @@
 <?php 
+declare(strict_types=1);
 
-# require_once dirname(__DIR__) . '/vendor/autoload.php';
+require_once dirname(__DIR__) . '/vendor/autoload.php'; # autoloader composer
 require_once dirname(__DIR__) . '/includes/config.php';
 require_once dirname(__DIR__) . '/includes/db.php';
 require_once dirname(__DIR__) . '/includes/auth.php';
 require_once dirname(__DIR__) . '/src/movie_functions.php';
+require_once dirname(__DIR__) . '/includes/security.php';
+
+startSecureSession();
 getCurrentUser();
 
 $query = $_GET['q'] ?? '';

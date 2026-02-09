@@ -1,10 +1,14 @@
 <?php
+declare(strict_types=1);
 
+require_once dirname(__DIR__) . '/vendor/autoload.php'; # autoloader composer
 require_once dirname(__DIR__) . '/includes/config.php';   // .env
 require_once dirname(__DIR__) . '/includes/db.php';       // PDO
 require_once dirname(__DIR__) . '/includes/auth.php';     // Auth
 require_once dirname(__DIR__) . '/src/category_functions.php'; // Fonctions films
+require_once dirname(__DIR__) . '/includes/security.php';
 
+startSecureSession();
 getCurrentUser();
 
 // Récupération du nom de la catégorie
