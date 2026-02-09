@@ -85,13 +85,15 @@ function searchMovies($query)
         SELECT DISTINCT m.id, m.title, m.price, m.poster_url
         FROM movies m
         LEFT JOIN directors d ON m.director_id = d.id
-        WHERE m.title LIKE :query
-           OR d.name LIKE :query
+        WHERE m.title LIKE :query1
+           OR d.name LIKE :query2
         ORDER BY m.title ASC
     ";
 
     $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':query', '%' . $query . '%', PDO::PARAM_STR);
+    $like = '%' . $query . '%';
+    $stmt->bindValue(':query1', $like, PDO::PARAM_STR);
+    $stmt->bindValue(':query2', $like, PDO::PARAM_STR);
     $stmt->execute();
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
