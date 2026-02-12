@@ -110,20 +110,35 @@ unset($_SESSION['flash_success']); // fenêtre pop-up ne s'affiche qu'une fois
     <?php else : ?>
         <ul>
             <?php foreach ($cartMovies as $movie) : ?>
-                <li>
-                    <?= htmlspecialchars($movie['title']) ?>
-                    <?= number_format((float)$movie['price'], 2) ?> €
+                <li class="cart-item">
 
-                    <form method="post" style="display:inline">
+                    <img
+                        src="<?= !empty($movie['poster_url'])
+                            ? 'https://image.tmdb.org/t/p/w200' . htmlspecialchars($movie['poster_url'])
+                            : 'images/movies/poster_placeholder.png' ?>"
+                        alt="<?= htmlspecialchars($movie['title']) ?>"
+                    >
+
+                    <div class="cart-info">
+                        <a href="movie.php?id=<?= (int)$movie['id'] ?>">
+                            <?= htmlspecialchars($movie['title']) ?>
+                        </a>
+
+                        <p><?= number_format((float)$movie['price'], 2) ?> €</p>
+                    </div>
+
+                    <form method="post">
                         <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(generateCsrfToken()) ?>">
-                        <input type="hidden" name="movie_id" value="<?= (int) $movie['id'] ?>">
+                        <input type="hidden" name="movie_id" value="<?= (int)$movie['id'] ?>">
                         <button type="submit" name="remove_from_cart">Supprimer</button>
                     </form>
+
                 </li>
+
             <?php endforeach; ?>
         </ul>
 
-        <p><strong>Total :</strong> <?= number_format((float)$cartTotal, 2) ?> €</p>
+        <pp class="cart-total">Total : <?= number_format((float)$cartTotal, 2) ?> €</p>
 
         <form method="post">
             <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(generateCsrfToken()) ?>">

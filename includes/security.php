@@ -47,9 +47,6 @@ function verifyCsrfToken(string $token):bool {
 
     $ok = hash_equals($sessionToken, $token);
     
-    if ($ok) {
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // génère un nouveau token pour la prochaine fois
-        }
     return $ok;
 }
 

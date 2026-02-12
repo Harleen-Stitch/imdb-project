@@ -64,9 +64,9 @@ include dirname(__DIR__) . '/includes/header.php';
                 <strong>Catégories :</strong>
                 <?php if (empty($categories)) : ?>
                 <?php else : ?>
-                    <?php foreach ($categories as $category) : ?>
+                    <?php foreach ($categories as $index => $category) : ?>
                         <a href="category.php?name=<?= urlencode($category['name']) ?>">
-                            <?= htmlspecialchars($category['name']) ?>
+                            <?= htmlspecialchars($category['name']) ?><?= $index < count($categories) - 1 ? ', ' : '' ?>
                         </a>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -87,8 +87,8 @@ include dirname(__DIR__) . '/includes/header.php';
                 <strong>Acteurs :</strong>
                 <?php if (empty($actors)) : ?>
                 <?php else : ?>
-                    <?php foreach ($actors as $actor) : ?>
-                        <span><?= htmlspecialchars($actor['name']) ?></span>
+                    <?php foreach ($actors as $index => $actor) : ?>
+                        <?= htmlspecialchars($actor['name']) . ($index < count($actors) - 1 ? ', ' : '') ?>
                     <?php endforeach; ?>
                 <?php endif; ?>
             </p>

@@ -7,6 +7,11 @@
             src="https://image.tmdb.org/t/p/w500<?= htmlspecialchars($movie['poster_url']) ?>"
             alt="<?= htmlspecialchars($movie['title']) ?>"
         >
+    <?php else : ?>
+        <img
+            src="images/movies/poster_placeholder.png"
+            alt="Poster non disponible"
+        >
     <?php endif; ?>
 
     <div class="movie-buy">

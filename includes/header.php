@@ -15,6 +15,8 @@ startSecureSession();
 <body>
 
 <nav class="header">
+    <input type="checkbox" id="menu-toggle" hidden>
+    <label for="menu-toggle" class="burger">☰</label>
     <ul class="menu">
         <li><a href="index.php">Accueil</a></li>
 
